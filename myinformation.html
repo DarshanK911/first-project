@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Information</title>
+  <style>
+    :root {
+      --bg-color: #ffffff;
+      --text-color: #000000;
+      --card-bg: #f5f5f5;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #ffffff;
+      --card-bg: #1e1e1e;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Times New Roman', Times, serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: var(--card-bg);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .icon-btn {
+      background: none;
+      border: none;
+      font-size: 24px;
+      cursor: pointer;
+      color: var(--text-color);
+    }
+
+    .profile-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .profile-links.centered {
+      justify-content: center;
+    }
+
+    .profile-links a img {
+      width: 32px;
+      height: 32px;
+      filter: brightness(0);
+      transition: 0.3s ease;
+    }
+
+    [data-theme="dark"] .profile-links a img {
+      filter: brightness(1) invert(1);
+    }
+
+    .profile-links a img:hover {
+      transform: scale(1.1);
+    }
+
+    .container {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .centered {
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 200px;
+      border-radius: 400px;
+      display: block;
+      margin: 0 auto 15px;
+    }
+
+    .section {
+      margin-bottom: 50px;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+      text-align: center;
+    }
+
+    ul li::before {
+      content: "✔ ";
+      color: var(--text-color);
+    }
+
+    h1, h2, h3 {
+      color: var(--text-color);
+    }
+
+    /* Project gallery */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .project-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .project-card a {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      text-decoration: none;
+      color: var(--text-color);
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+      color: gray;
+    }
+  </style>
+</head>
+<body data-theme="light">
+
+  <header>
+    <h1>My Information</h1>
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle Theme">𖤓</button>
+  </header>
+
+  <div class="container">
+    <div class="section centered">
+      <img src="myimage.jpg" alt="Profile Photo" class="profile-img">
+      <h3>Darshan K</h3>
+      <h3>Full stack developer(beginner)</h3>
+
+      <h3>Soft skills:</h3>
+      <ul>
+        <li>HTML, CSS, JavaScript (Basics)</li>
+        <li>React, Node.js (Basics)</li>
+        <li>MongoDB, Express (Basics)</li>
+        <li>Java, Python(Basics)</li>
+      </ul>
+
+      <h3>My other profiles:</h3>
+      <div class="profile-links centered">
+        <a href="https://github.com/DarshanK911" target="_blank" title="GitHub">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+        </a>
+        <a href="https://www.linkedin.com/in/darshan-k-594a6335a" target="_blank" title="LinkedIn">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+        </a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h1 class="centered">Projects</h1>
+      <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card">
+          <img src="PROGRESS.png" alt="Project 1">
+          <a href="https://github.com/DarshanK911" target="_blank">Project 1: still in progress</a>
+        </div>
+        <!-- Project 2 -->
+        <div class="project-card">
+          <img src="PROGRESS.png" alt="Project 2">
+          <a href="https://github.com/DarshanK911" target="_blank">Project 2: still in progress</a>
+        </div>
+        <!-- Project 3 -->
+        <div class="project-card">
+          <img src="PROGRESS.png" alt="Project 3">
+          <a href="https://github.com/DarshanK911" target="_blank">Project 3: still in progress</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 creator:Darshan K  (sample project)
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      body.setAttribute("data-theme", newTheme);
+
+      const icon = document.querySelector('.icon-btn');
+      icon.textContent = newTheme === "dark" ? "☼" : "𖤓";
+    }
+  </script>
+
+</body>
+</html>
